@@ -1,0 +1,115 @@
+:root {
+    --mws-primary: #0d6e6e;
+    --mws-primary-dark: #0a5656;
+    --mws-accent: #0ea5a5;
+    --mws-sidebar-width: 250px;
+    --mws-topbar-height: 56px;
+}
+
+body {
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+    background: #f4f7f9;
+    color: #24313a;
+}
+
+/* Top navigation bar ------------------------------------------------------ */
+.app-topbar {
+    background: linear-gradient(90deg, var(--mws-primary-dark), var(--mws-primary));
+    min-height: var(--mws-topbar-height);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .12);
+    z-index: 1035;
+}
+.app-topbar .navbar-brand { font-size: 1.05rem; }
+
+/* Layout shell ------------------------------------------------------------ */
+.app-shell { display: flex; min-height: calc(100vh - var(--mws-topbar-height)); }
+
+.app-sidebar {
+    width: var(--mws-sidebar-width);
+    background: #fff;
+    border-right: 1px solid #e3e9ee;
+    flex: 0 0 var(--mws-sidebar-width);
+}
+.app-sidebar .sidebar-heading {
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: #8a98a5;
+    padding: 1rem 1.25rem .35rem;
+    font-weight: 600;
+}
+.app-sidebar .nav-link {
+    color: #41505d;
+    padding: .55rem 1.25rem;
+    border-left: 3px solid transparent;
+    font-size: .93rem;
+}
+.app-sidebar .nav-link:hover { background: #f0f6f6; color: var(--mws-primary-dark); }
+.app-sidebar .nav-link.active {
+    background: #e7f4f4;
+    color: var(--mws-primary-dark);
+    border-left-color: var(--mws-primary);
+    font-weight: 600;
+}
+
+.app-main { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; }
+.app-main > .container-fluid { flex: 1 1 auto; }
+.app-footer { border-top: 1px solid #e3e9ee; background: #fff; }
+
+@media (min-width: 992px) {
+    .app-sidebar.offcanvas-lg { position: sticky; top: var(--mws-topbar-height); height: calc(100vh - var(--mws-topbar-height)); overflow-y: auto; }
+}
+
+/* Cards & stat tiles ------------------------------------------------------ */
+.stat-card {
+    border: 0;
+    border-radius: .75rem;
+    box-shadow: 0 1px 3px rgba(16, 40, 60, .08);
+    overflow: hidden;
+}
+.stat-card .stat-icon {
+    width: 48px; height: 48px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: .6rem; font-size: 1.4rem;
+}
+.stat-card .stat-value { font-size: 1.7rem; font-weight: 700; line-height: 1.1; }
+.stat-card .stat-label { color: #71808d; font-size: .82rem; text-transform: uppercase; letter-spacing: .03em; }
+
+.card { border: 0; border-radius: .75rem; box-shadow: 0 1px 3px rgba(16, 40, 60, .08); }
+.card-header { background: #fff; border-bottom: 1px solid #eef2f5; font-weight: 600; }
+
+.page-title { font-size: 1.35rem; font-weight: 700; color: #1d2a33; }
+.breadcrumb { font-size: .82rem; }
+
+/* Tables ------------------------------------------------------------------ */
+.table > :not(caption) > * > * { padding: .6rem .75rem; }
+.table thead th { background: #f7fafb; font-size: .78rem; text-transform: uppercase; letter-spacing: .03em; color: #6b7a86; border-bottom: 2px solid #e6edf1; }
+.table-hover tbody tr:hover { background: #f5fbfb; }
+
+/* Login / setup pages ----------------------------------------------------- */
+.auth-wrap {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, var(--mws-primary-dark), var(--mws-accent));
+    padding: 1.5rem;
+}
+.auth-card { max-width: 430px; width: 100%; border-radius: 1rem; }
+.auth-brand { color: var(--mws-primary-dark); }
+
+/* QR ---------------------------------------------------------------------- */
+.qr-box { display: inline-block; padding: 1rem; background: #fff; border: 1px dashed #ccd6dd; border-radius: .5rem; }
+#qr-reader { width: 100%; max-width: 420px; }
+.qr-print-label { border: 1px solid #333; padding: 12px; width: 260px; text-align: center; margin: 10px; }
+
+/* Misc -------------------------------------------------------------------- */
+.empty-state { text-align: center; padding: 2.5rem 1rem; color: #8a98a5; }
+.empty-state i { font-size: 2.4rem; display: block; margin-bottom: .5rem; }
+.text-mono { font-family: "Cascadia Mono", Consolas, "Courier New", monospace; }
+.cursor-pointer { cursor: pointer; }
+
+@media print {
+    .app-topbar, .app-sidebar, .app-footer, .no-print, .btn { display: none !important; }
+    .app-main { margin: 0 !important; }
+    body { background: #fff; }
+    a[href]:after { content: ""; }
+}

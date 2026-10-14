@@ -1,0 +1,18 @@
+# Bundled portable PHP runtime (download separately - see README section 8)
+/runtime/php/
+
+# SQLite database and sidecar files (created at runtime; never commit data)
+/database/*.sqlite
+/database/*.sqlite-wal
+/database/*.sqlite-shm
+
+# Local launcher logs / temporary test artifacts
+_launch.log
+_launch.bat
+*.tmp
+
+# OS / editor cruft
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.swp
